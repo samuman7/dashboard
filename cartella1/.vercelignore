@@ -1,0 +1,4 @@
+# Files kept in the GitHub repo but NOT deployed to the live site.
+# template.html is a starter/reference for building new sections —
+# it shouldn't be a reachable page on the live dashboard.
+template.html
