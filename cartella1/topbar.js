@@ -462,8 +462,18 @@ body.topbar-modal-open {
     sync();
   }
 
+  function registerPwa() {
+    if (!('serviceWorker' in navigator)) return;
+    const isLocalFile = window.location.protocol === 'file:';
+    if (isLocalFile) return;
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }, { once: true });
+  }
+  
   // -------- Boot --------
   function boot() {
+     registerPwa();
     injectStyleAndHTML();
     const btn = document.getElementById('topbarWaterAdd');
     if (btn) btn.addEventListener('click', (e) => { e.preventDefault(); addWater(); });
